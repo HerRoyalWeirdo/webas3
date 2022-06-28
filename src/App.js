@@ -2,6 +2,8 @@
 import './App.css';
 import React, {useState, useEffect} from 'react';
 import Navigation from './components/Navigation';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { getAllGradients, createGradientItem, deleteGradientItem } from './api';
 
 import {Paper, Grid, Button, Typography, TextField, makeStyles, List, ListItem, ListItemText, ListItemSecondaryAction} from '@material-ui/core';
@@ -41,6 +43,8 @@ function App() {
     event.preventDefault();
     createGradientItem(gradDetail).then(res => {
       console.log('Rainbow Pain details added to the database');
+      localStorage.setItem('info', gradDetail);
+      console.log("Added to database: " + localStorage.getItem('info'));
     });
     resetInputField();
   }
@@ -50,7 +54,10 @@ function App() {
 
   function handleDeleteItem(event, id) {
     event.preventDefault();
-    deleteGradientItem(id).then(res => res);
+    deleteGradientItem(id).then(res => {
+      localStorage.removeItem(gradDetail);
+      console.log("Removed item from database ");
+    });
     const newGrads = gradients.filter(gradient => gradient.ref.id !== id);
     setgrad(newGrads);
   }
@@ -106,7 +113,10 @@ function App() {
     ))}
         </Grid>
       </Grid>
-        
+
+      <BottomNavigation className="footer" showLabels value="Me" fullwidth >
+      <BottomNavigationAction label="&copy; Made by the very tired Talitha, 2022. "/>
+        </BottomNavigation>
           {/* <Typography variant="p">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Reprehenderit itaque iusto perferendis consectetur culpa

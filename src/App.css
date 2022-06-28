@@ -80,4 +80,7 @@ input{
 color:rgb(183, 2, 80)!important;
 }
 
-
+.footer{
+  background:linear-gradient(#f1b1de, #c687e1, #9198e5, #75aee3, #8feaf2, #95f4c1, #deecb9, #f2e3bc, #f2968f, #f29bbf);
+color:black!important;
+}

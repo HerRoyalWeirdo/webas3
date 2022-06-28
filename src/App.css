@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -25,7 +26,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: black;
 }
 
 @keyframes App-logo-spin {
@@ -36,3 +37,47 @@
     transform: rotate(360deg);
   }
 }
+
+/* Grid{
+background-color: rgb(189, 236, 237)!important;
+color:black!important;
+}
+
+input{
+  background-color: rgb(191, 200, 239)!important;
+  color: black!important;
+}
+body{
+  background:linear-gradient(#f1b1de, #c687e1, #9198e5, #75aee3, #8feaf2, #95f4c1, #deecb9, #f2e3bc, #f2968f, #f29bbf);
+  color: black!important;
+}
+
+Button{
+  color: black!important;
+} */
+
+html{
+  background:linear-gradient(#f1b1de, #c687e1, #9198e5, #75aee3, #8feaf2, #95f4c1, #deecb9, #f2e3bc, #f2968f, #f29bbf);
+  color: black!important;
+}
+
+span {
+  color:rgb(183, 2, 80);
+}
+
+button{
+  color: black!important;
+  border: 2px solid hotpink;
+}
+
+Header{
+  background:linear-gradient(#f1b1de, #c687e1, #9198e5, #75aee3, #8feaf2, #95f4c1, #deecb9, #f2e3bc, #f2968f, #f29bbf);
+color:black!important;
+}
+
+input{
+  /* background:linear-gradient(#f1b1de, #c687e1, #9198e5, #75aee3, #8feaf2, #95f4c1, #deecb9, #f2e3bc, #f2968f, #f29bbf); */
+color:rgb(183, 2, 80)!important;
+}
+
+

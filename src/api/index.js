@@ -1,8 +1,5 @@
 import { client, q } from '../config/db.js';
-// import React from 'react';
-// export const getAllExpenses;
-// export const createExpenseItem;
-// export const deleteExpenseItem;
+
 
 export const getAllGradients = client
   .query(q.Paginate(q.Match(q.Ref('indexes/all_grads'))))

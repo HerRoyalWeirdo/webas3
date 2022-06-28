@@ -1,10 +1,10 @@
 //import logo from './logo.svg';
 import './App.css';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Navigation from './components/Navigation';
-import { createGradientItem } from './api';
+import { getAllGradients, createGradientItem, deleteGradientItem } from './api';
 
-import {Paper, Grid, Button, Typography, TextField, makeStyles} from '@material-ui/core';
+import {Paper, Grid, Button, Typography, TextField, makeStyles, List, ListItem, ListItemText, ListItemSecondaryAction} from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -17,13 +17,21 @@ const useStyles = makeStyles({
   }
 });
 
+
 function App() {
   //return <Navigation title="Broken Rainbow app" />
-
 
   const classes = useStyles();
   const [gradDetail, setgradDetail] = useState('');
   const [gradients, setgrad] = useState([]);
+
+  useEffect(() => {
+    getAllGradients.then(res => {
+      setgrad(res);
+      console.log(res);
+    });
+  }, []);
+
 
   function handlegradDetailChange(event) {
     console.log(event.target.value);
@@ -40,6 +48,12 @@ function App() {
     setgradDetail('');
   }
 
+  function handleDeleteItem(event, id) {
+    event.preventDefault();
+    deleteGradientItem(id).then(res => res);
+    const newGrads = gradients.filter(gradient => gradient.ref.id !== id);
+    setgrad(newGrads);
+  }
   return (
     <>
       <Navigation title="Broken Rainbow app" />
@@ -59,7 +73,7 @@ function App() {
               <Grid xs={2} md={1} item>
                 <Button
                   fullWidth
-                  color="secondary"
+                  color="primary"
                   variant="outlined"
                   onClick={handleSubmit}>
                   Add
@@ -69,7 +83,27 @@ function App() {
           </Paper>
         </Grid>
         <Grid item xs={12} md={5} className={classes.list}>
-          <Typography>List of Pain</Typography>
+          <Typography variant="h4">List of Pain</Typography>
+          {gradients &&
+          gradients.map(gradient => (
+            <div key={gradient.ref.id}>
+              <Paper style={{ margin: 16 }}>
+                <List style={{ overflow: 'scroll' }}>
+                  <ListItem>
+                    <ListItemText primary={gradient.data.name} />
+                    <ListItemSecondaryAction>
+                      <Button
+                        color="primary"
+                        variant="outlined"
+                        onClick={event => handleDeleteItem(event, gradient.ref.id)}>
+                    Delete
+                  </Button>
+                </ListItemSecondaryAction>
+              </ListItem>
+            </List>
+          </Paper>
+        </div>
+    ))}
         </Grid>
       </Grid>
         

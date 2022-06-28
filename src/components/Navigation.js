@@ -5,7 +5,7 @@ export default function Navigation({ title }) {
     return (
       <AppBar>
         <Toolbar>
-          <Typography variant="h6">{title}</Typography>
+          <Typography variant="h4">{title}</Typography>
         </Toolbar>
       </AppBar>
     );

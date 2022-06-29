@@ -45,6 +45,7 @@ function App() {
       console.log('Rainbow Pain details added to the database');
       localStorage.setItem('info', gradDetail);
       console.log("Added to database: " + localStorage.getItem('info'));
+      //refresh something
     });
     resetInputField();
   }
